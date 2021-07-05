@@ -1,71 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
 
-int main()
-{
-    int arr[] = {1, 2, 3, 4, 1, 2};
-    int arrSize = sizeof(arr) / sizeof(int);
-    int start, end;
-    int fd[2];
-    if (pipe(fd) == -1)
-    {
-        return 1;
-    }
+//https://linuxhint.com/pipe_system_call_c/
 
-    int id = fork();
-    if (id == -1)
-    {
-        return 2;
-    }
+int main(void) {
+		int fd[2];
 
-    if (id == 0)
-    {
-        start = 0;
-        end = arrSize / 2;
-    }
-    else
-    {
-        start = arrSize / 2;
-        end = arrSize;
-    }
+		if(pipe(fd) == -1) {
+				perror("pipe");
+				exit(EXIT_FAILURE);
+		}
 
-    int sum = 0;
-    int i;
-    for (i = start; i < end; i++)
-    {
-        sum += arr[i];
-    }
+		printf("Read File Descriptor Value: %d\n", fd[0]);
+		printf("Write File Descriptor Value: %d\n", fd[1]);
+/*The program will return 3 and 4.  This is because 0, 1, 2 are already taken by stdin, stdout, stderr. If you open other files, 5, 6, 7 etc.  But if you close files, the respective numbers can be used by another.
 
-    printf("Calculated partial sum: %d\n", sum);
-    //################################################
-
-    if (id == 0)
-    {
-        close(fd[0]);
-        if (write(fd[1], &sum, sizeof(sum)) == -1)
-        {
-            return 3;
-        }
-        close(fd[1]);
-    }
-    else
-    {
-        int sumFromChild;
-        close(fd[1]);
-        if (read(fd[0], &sumFromChild, sizeof(sumFromChild)) == -1)
-        {
-            return 4;
-        }
-        close(fd[0]);
-
-        int totalSum = sum + sumFromChild;
-        printf("Total sum is %d\n", totalSum);
-        wait(NULL);
-    }
-
-    return 0;
+https://unix.stackexchange.com/questions/176324/what-and-why-file-descriptors
+*/
+		return EXIT_SUCCESS;
 }
+

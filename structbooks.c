@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<string.h>
 
-typedef struct Books
+typedef struct 
 {
     char title[20];
     char author[20];
@@ -28,10 +29,14 @@ int main()
 	So below will not work!
 	A string can only be assigned to an array at 
 	declaration.
+	Hence STRCPY must be used
 	*/
     //Books *bk2;
     //bk2 = &book2;
     //*(*bk2).author = "Hello";
     //printf("Author book2: %s\n", book2.author);
+	strcpy(book2.author, "George RR Martin");
+	printf("Game of Thrones author is: %s\n", book2.author);
+
     return 0;
 }

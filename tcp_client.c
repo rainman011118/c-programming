@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 #include<sys/types.h>
 #include<sys/socket.h>
-
 #include<netinet/in.h>
 
 /*youtube: https://www.youtube.com/watch?v=LtXEMwSG5-8*/
+//CHECK MAN UNIX for their server and client code.
+
 int main() {
 
 	//create a socket

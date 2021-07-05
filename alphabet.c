@@ -3,19 +3,15 @@
 
 int main()
 {
-    int acter;
+    int x;
+    do {
+        x = getchar();
+        if (isalpha(x)) {
+			putchar(x);
+		}
+	}while (x != '\n');
 
-    do
-    {
-        acter = getchar();
-        if (isalpha(acter)) //isupper, isblank et al
-        {
-            putchar(acter);
-        }
-
-    } while (acter != '\n');
-
-    printf("\n");
+    printf("\ndone\n");
 
     return 0;
 }

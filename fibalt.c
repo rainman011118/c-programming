@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int fibonacci(int i)
 {
     if (i == 0)

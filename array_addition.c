@@ -1,20 +1,20 @@
 #include <stdio.h>
 
 int arraySum(int myArray[], int size)
+
 /*How does the system know what 'size' is?? - ANSWER: the parameter names do not have to match the argument names passed through.  So int size, just expects an 'int' of some sort.  
-I tried it without putting a [6] in and left it blank,
-but the code still ran fine?? - ANSWER: int myArray is a pointer to the memory address, therefore the program automatically detects the size of it.*/
+I tried it without putting 'myArray[6]' in and left it blank, but the code still ran fine?? - ANSWER: int myArray is a pointer to the memory address, therefore the program automatically detects the size of it.*/
 {
     int sum = 0;
-
     for (int i = 0; i < size; i++)
     {
         sum += myArray[i];
-        printf("%dTest...\n", i);
+        printf("%dJust Testing it is going through the indexes...\n", i);
     }
     return sum;
     //printf("%d\n", sum);
 }
+
 int main()
 {
     int myArray[6] = {10, 20, 30, 40, 50, 60};

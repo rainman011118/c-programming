@@ -13,7 +13,7 @@ int main()
     char *ptr = arr;
     printf("%p\n", ptr);
 ###############################################*/
-    /*char *ptr = arr[5];
+    /*char *ptr = arr[5];//This most likely won't work and may be needs to be cast....????
     printf("%c\n", *ptr);
     THE ABOVE DOESN'T WORK, BUT THE BELOW DOES...*/
     char *ptr = &arr[5];

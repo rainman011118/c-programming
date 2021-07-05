@@ -1,11 +1,8 @@
 #include <stdio.h>
+
 int main()
 {
     int c;
-    /*This is a condensed way of writing the code, 
-    by combining the user input(getchar()), the 
-    assignment to 'c' and the condition in one.
-    */
     while ((c = getchar()) != '\n' && c != EOF)
     /*I added the && c != EOF bit because it is safer.
     Since getchar returns chars, '\n' has a value on ASCII, 

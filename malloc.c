@@ -1,56 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-/*https://overiq.com/c-programming-101/the-malloc-function-in-c/
+#include<stdio.h>
+#include<stdlib.h>
 
-SYNTAX: void *malloc(size_t size);
-p = (datatype *)malloc(size);
+/*The reason malloc/calloc is used is when you don't know the exact size of the array elements required, therefore call to memory can dynamically allocate it at runtime.  If you know the size of the array, then just declare it: arr[256]. So malloc/calloc isn't required.
+ */
 
-Malloc always returns a void pointer.
-size_t (it's own datatype) is equivalent to unsigned int.
+int main(int argc, char** argv) {
+		int* ptr = malloc(sizeof(int));
+		if(ptr == NULL) {
+				fprintf(stderr, "Memory allocation failed!\n");
+				exit(1);
+		}
+		*ptr = 5;
+		printf("The value of *ptr is: %d\n", *ptr);
+		free(ptr);	
+//#######################################################
+		int p_size = 3;
+		int* p = malloc(p_size * sizeof(int));
+		if(p == NULL) {
+				fprintf(stderr, "Memory allocation failed!\n");
+				exit(1);
+		}
+		p[1] = 4;
+		p[2] = 6;
+		printf("p[1]: %d\np[2]: %d\np[0]: %d\n", p[1], p[2], p[0]);
+		
+		free(p);
 
-int main()
-{
-    int *p;                //declares p = pointer to int
-    p = (int *)malloc(20); //allocate 20 bytes
-
-    int *ptr;
-    ptr = (int *)malloc(5 * sizeof(int)); //allocate sufficient memory for 5 ints.
-                                          /*This method, using sizeof gives flexibility to 
-    our program i.e. makes it portable.
-    
-    It is GOOD PRACTICE to always check the value
-    returned by malloc() in case the heap runs out
-    of free space:
-    
-    if (p == NULL)
-    {
-        printf("Memory allocation failed");
-        exit(1);
-    }
-}*/
-int main()
-{
-    float *p, sum = 0;
-    int i, n;
-
-    printf("Enter the number of students: ");
-    scanf("%d", &n);
-    p = (float *)malloc(n * sizeof(float));
-    if (p == NULL)
-    {
-        printf("Memory allocation failed\n");
-        exit(1);
-    }
-    for (i = 0; i < n; i++)
-    {
-        printf("Enter marks for %d student: ", i + 1);
-        scanf("%f", p + i);
-    }
-    for (i = 0; i < n; i++)
-    {
-        sum += *(p + i);
-    }
-    printf("\nAverage marks = %.2f\n", sum / n);
-    free(p);
-    return 0;
+		return 0;
 }
+
+
+
+
+

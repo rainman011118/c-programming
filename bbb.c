@@ -1,28 +1,60 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-#define A_SIZE 5
+struct node {
+		int data;
+		struct node* next;
+};
 
-//assigning values at runtime as opposed to statically assigning them prior to runtime.
+struct node* create_node(int data, char* title);
+void traverse_linked_list(struct node* a);
+void free_linked_list(struct node* head);
 
-int main() {
-	int a[5];
 
-	for(int i = 0; i < A_SIZE; i++) {
-		a[i] = i*5;
-	}
-	for(int i = 0; i < A_SIZE; i++) {
-		printf("%d\n", a[i]);
-	}
-	
-	return 0;
+int main(int argc, char** argv) {
+		struct node* head = create_node(10, "head");
+		struct node* two = create_node(20, "two");
+		struct node* three = create_node(30, "three");
+
+		head->next = two;
+		two->next = three;
+
+		traverse_linked_list(head);
+		free_linked_list(head);
+
+		return 0;
 }
-/*DANGERS of C:
-If the programmer accidentally forgets to change the index limit back to the array size, then the loop will still run, and output correctly. HOWEVER, it is now writing this to unsigned memory beyond the array size specified.
-eg if I put 'i < 10' but array size is still [5], then I will get a correct output but NO ERROR is shown...
-THEREFORE it is wise to use 'define' to prevent the chances of this happening.
-ALTERNATIVE(modern way) is to just declare a size variable:
-int a_size = 5;
-int a[a_size];
-*/
 
+struct node* create_node(int data, char* title) {
+		struct node* x = malloc(sizeof(struct node));
+		if(x==NULL) {
+				fprintf(stderr, "memory allocation failed\n");
+				exit(1);
+		}
+		x->data = data;
+		x->next = NULL;
+		printf("%s node successfully created\n", title);
+
+		return x;
+}
+
+void traverse_linked_list(struct node* a) {
+		while(a != NULL) {
+				printf("data: %d\n", a->data);
+				a = a->next;
+		}
+}
+
+void free_linked_list(struct node* head) {
+		struct node* tmp;
+		while(head != NULL) {
+				tmp = head;
+				head = head->next;
+				free(tmp);
+				tmp = NULL;
+				printf("node successfully freed\n");
+		}
+}
+
+
+		

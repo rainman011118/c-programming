@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-void displayString(char str[1]);
+
+void displayString(char str[]);
 
 int main()
 {
-    char str[50];
-
+    char str[10];
     printf("Enter string: ");
-
     fgets(str, sizeof(str), stdin);
     /*sizeof(str) is the same as just typing in the
     size value 50.*/

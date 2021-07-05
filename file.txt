@@ -1,0 +1,10 @@
+This is just a simple text file I am writing for the purposes of 'file' reading using the C programming language.  
+Names:  Jonathan
+        Melissa
+        George
+        Jim
+        Carey
+Jobs:   Engineer
+        Dentist
+        Geologist
+        Carpenter.

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 /* strchr(str, char) searches the occurrence of a 
 specified character in a given string and returns
 the pointer to it.*/

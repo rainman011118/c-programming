@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int main()
 {
     int a = 1;
@@ -14,7 +15,10 @@ int main()
     b is incremented to 2 after completion.
     BUT because ||, when the first part completes,
     the process stops; no need to complete the rest.
-    So int c = 2
+    So int c = 2 - NO IT IS NOT!!
+NOTE: ORDER IN WHICH VARIABLES ARE CALLED: d, c, b, a.  This effects the values that come after each one!!!
+
+	Answer: 1101
 
     b-- && --a
     b will be decremented AFTER

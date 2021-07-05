@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int main()
 {
     char input[] = "Jonny Bee 37 181 75";

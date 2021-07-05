@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 int main()
 {
     int a[5] = {99, 39, 25, 101, 920};
@@ -35,12 +36,12 @@ int main()
     //printf("&b = %s\n", &b);//This doesn't compile.
     /*https://www.youtube.com/watch?v=Cfm4D_Mxpiw 'Arrays as function parameters in C'
     See this link which explains: 
-    %s expects char *, but arg is char*[6]
+    %s expects char *, but arg is char*[6] (basically a double pointer)
     Therefore *&b will work.
     */
-
     printf("&b = %p\n", &b);
     printf("b = %s\n", b);
     printf("*b = %c\n", *b);
-    return 0;
+
+	return 0;
 }

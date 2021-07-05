@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /*Run this from the terminal to understand how
 the arguments work.
 e.g. ./a.out = argv[0](position 0 in cmd line).
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
+
 /*int argc is the number(count) of arguments passed
 from the COMMAND LINE:
 e.g ./a.out = argc of 1

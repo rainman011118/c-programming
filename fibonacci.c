@@ -18,8 +18,8 @@ void fib(int x)
         printf("%d %d\n", a, b);
         return;
     }
-    printf("%d %d", a, b);
 
+    printf("%d %d", a, b);
     for (int i = 3; i <= x; i++)
     {
         c = a + b;
@@ -38,3 +38,4 @@ int main()
     }
     return 0;
 }
+

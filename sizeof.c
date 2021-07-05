@@ -7,11 +7,14 @@ int main()
     int result = (two + three) * six / three;
     printf("The result of this expression is: %d\n", result);
 
-    printf("%zu\n", sizeof(int));
     printf("%zu\n", sizeof(char));
-    printf("%zu\n", sizeof(double));
+    printf("%zu\n", sizeof(short));
+    printf("%zu\n", sizeof(int));
     printf("%zu\n", sizeof(float));
+    printf("%zu\n", sizeof(double));
     printf("%zu\n", sizeof(long));
+    printf("%zu\n", sizeof(long long));
+    printf("%zu\n", sizeof(long double));
 
     // '#include<limits.h> is needed
     short int var1 = SHRT_MIN;

@@ -20,16 +20,14 @@ int main(int argc, char **argv)
         printf("Input message: ");
         fgets(message, 100, stdin);
         message[strlen(message) - 1] = 0;
-        /*gets rid of the automatic new-line ch from 
-        fgets....
-        ....OR NOT since printf had \n which was 
-        causing the new line to be output.
-        can be = 0; or = '\0'; Both the same.*/
+        /*gets rid of the new-line ch which is included from 
+        fgets and replaces it with 0.
+		*/
         printf("(%d) Sent message: %s\n", id, message);
     }
 
     return 0;
 }
 
-/*Both fgets and scanf store the 'enter' in their buffers, hence why when a subsequent scanf/fgets/ or stdin line is followed, it will automatically take in what's left in the buffer from the previous reads i.e. 'enter'
+/*Both fgets and scanf store the 'enter'(\n) in their buffers, hence why when a subsequent scanf/fgets/ or stdin line is followed, it will automatically take in what's left in the buffer from the previous reads i.e. 'enter'
  */

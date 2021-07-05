@@ -1,0 +1,63 @@
+#merge_sort() called on array[10].:
+										6,3,2,6,7,4,8,9,5,7
+#Split into 2 arrays of [5].
+							6,3,2,6,7						4,8,9,5,7
+
+#1st merge_sort(left) called we get 2 arrays:
+
+					6,3					2,6,7
+
+#2nd merge_sort(left) called:
+
+				6			3
+
+#3rd merge_sort(left) called on '6'. Since it is <2 in size, it returns 6 back to caller(6,3).
+
+#Now merge_sort(right) is called on the 3. Since it is <2 in size, it returns 3 back to caller(6,3).
+#Since both have returned values, merge fn() can now be called on the 6,3.
+#While 0 is less than the length of both left and right arrays, add either one to the main array depending on which is smaller.  If there are some left over after the sort, add it to main array.
+
+# So result of final array will be: 3,6.
+# MAIN ARRAY: 3,6
+
+# This is returned to caller and then the next recursion fn is processed:
+# This takes us back to the 2,6,7. Where it gets split into:
+	
+	2			6,7
+
+#merge_sort(left) is called on 2, which returns 2.
+#merge_sort(right) is called on 6,7 and we get:
+
+	6			7
+#merge_sort(left) called on 6, returns 6.
+#merge_sort(right) called on 7, returns 7.
+
+# Now merge() is called 2,6,7.
+# 2[0] < 6[0]
+# MAIN ARRAY: 2,6,7
+
+# NOW: both 3,6 and 2,6,7 call merge():
+# MAIN ARRAY: 2,3,6,6,7
+# This is returned and then 4,8,9,5,7 is processed with merge_sort(left) etc......
+
+# merge()
+	while(i < len(l) && j < len(r)) {
+		if(l[i] <= r[j]) {
+			arr[k] = l[i];
+			i++;
+			k++;
+		}else {
+			arr[k] = r[j];
+			j++;
+			k++;
+		}
+	while(i < len(l)) {
+		arr[k] = l[i];
+		i++;
+		k++;
+	}
+	while(j < len(r)) {
+		arr[k] = r[j];
+		j++;
+		k++;
+	}

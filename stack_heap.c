@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 //SEE MYCODESCHOOL youtube.com 'pointers and dynamic memory allocation.
+
 int total;
 int Square(int x)
 {

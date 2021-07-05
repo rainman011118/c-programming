@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-int main()
-{
-    int *p = NULL;
+int main() {
     int a = 10;
     void *q = &a;
-    printf("%d\n", *(int *)q);
+    printf("%d\n", *(int*)q);
     /* Value at *q should be a = 10.
 BUT because I declared it as a void pointer, which is 
 trying to access an 'int' address, you cannot call it
@@ -16,7 +14,6 @@ VOID pointers can store any data types but you
 cannot access them by dereferencing such as *q.
 You would have to typecast them.
 */
-
     int arr[3] = {22, 33, 44};
     int *ptr = arr;
     printf("%p\n%d\n", ptr, *ptr);

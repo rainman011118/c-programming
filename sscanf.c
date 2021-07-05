@@ -14,14 +14,14 @@ This means, scan the data from source, into these
 format specifiers and store at &num) */
 int main()
 {
-    char userInput[64];
+    char userInput[8];
     int num = 0;
     puts("Program start...");
 
     while (num == 0)
     {
         printf("Please enter a number between 1 and 99: ");
-        fgets(userInput, 63, stdin);
+        fgets(userInput, 8, stdin);
 
         if (strlen(userInput) < 2 || strlen(userInput) > 3)
         {

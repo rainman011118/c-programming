@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 int main()
 {
   char alpha[10];
@@ -34,8 +35,6 @@ int main()
     into the array.' See link below:
     (https://stackoverflow.com/questions/42404627/what-size-should-be-used-for-fgets)
     So it will read all the characters in hello, including
-    the 'enter', but stores 'hello' without the 'enter'.
-    It then adds \0 as the terminator.
-  
-  
+    the 'enter', AND stores 'hello' WITH the 'enter'.
+    It then adds \0 as the terminator. So length = 6(accounting for the \n).
   */

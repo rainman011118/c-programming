@@ -1,18 +1,16 @@
 /*Basic information:
 scanf() stops at whitespace.
-gets(), fgets() stop at new line.
+fgets() stop at new line.
 
 'ENTER'/NEW-LINE KEY PROBLEM:
 scanf(), fgets() all store the enter/new-line in the buffer. (gets() doesn't store the new-line).
-This can result in the next stdin data to be read being the 'enter/new-line' value instead
-of our expected next input.
+This can result in the next stdin data to be read being the 'enter/new-line' value instead of our expected next input.
  - getchar() or fgetc() can be placed after scanf() to 'eat' this.
  - <var>[strlen(<var>) - 1] = 0 can be placed after fgets().
  
  1byte can hold upto 255 characters.
  Char size = 1byte.
- Therefore 'char' data type is 255.  The first byte of a string, holds the string length.
- This means that the length of a string can hold a max of 255 only.
+ Therefore 'char' data type is 255.  The first byte of a string, holds the string length.  This means that the length of a string can hold a max of 255 only.
 
 POINTERS;
 The '*' means different things when talking about pointers.
@@ -47,8 +45,8 @@ Example:
 char arr[5];
 int *p = &arr;
 The following all give the same result:
-To get address: &arr, arr[], p.
-To get a value: arr[0], *p, *(p+2), *(arr[2]). 
+To get address (%p): arr, arr[], p.
+To get a value: arr[0], *p, *(p+2) 
 To increment a pointer: p++.
 **Pointers can be incremented whereas array name(arr++)
 cannot be incremented.
@@ -82,7 +80,6 @@ calculation once, and it is stored in 'sum'. So when sum
 is used in other parts of the code, it is accessed fast.
 
 
+ */
 
 
-
- .*/
