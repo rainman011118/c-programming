@@ -2,7 +2,8 @@
 #include<stdlib.h>
 
 #pragma pack(1)
-/*This aligns things according to (n) bytes.
+/*MADE THIS CHANGE!!!!!!!!!!!!!!!!!!!!!!!1
+ * This aligns things according to (n) bytes.
 (1) = hex no's come one after the other, no spacing.(EASIEST TO FOLLOW).  
 (4) = hex no's spaced 4 bytes with padding of 00 to fill up nibbles/bytes.  
 (8) = hex no's spaced 8 bytes with padding of 00...
@@ -53,7 +54,7 @@ Each 2digits = 1 byte.
 0c 00 00 00 = the int test (4 bytes)
 6b = char k (1 byte)
 61 61 61 61 61 61 61 00 00 00 = char str[10] - all 10 bytes are taken.
-ac 2c 90 a1 de ff 7f 00 = &i(8bytes)
+ac 2c 90 a1 de ff 7f 00 = &p(8bytes)
 ff 00 = short(2bytes) After this the no.'s are random garbage.
 
 The reason there are rows of 8bytes is due to the loop.  8 % 8 = new line, 16 % 8 = new line etc.  So first 8 bytes will be filled up with int(4), char(1), char str "tes"(3). NEW LINE, "ting\0"(5) BUT BECAUSE [10] HAS BEEN ALLOCATED, 00 00 fills the rest and i = 15.  So next i = 16 gets filled with 00 and then NEW LINE and int* p starts = 8 bytes.  So, next line = short = 2 bytes which I think is ff00 = 255 in little endian.
