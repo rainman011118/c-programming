@@ -1,71 +1,66 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#define MAX 10
 
-
-struct node {
-		int data;
-		struct node* next;
-};
-
-struct node* build_node(int data, const char* name);
-void traverse_list(struct node* head);
-void free_list(struct node* head);
-void insert_node(struct node** head, int data, const char* name);
+void printarray(char* arr, int size) {
+		int i;
+		for(i=0;i<size;i++) {
+				printf("%d ", arr[i]);
+		}
+		printf("\n");
+}
+void merge(char* arr, int low, int mid, int high) {
+		printf("calling merge with\n");
+		printarray(arr, high);
+		char barr[MAX];
+		int l, m, i;
+		for(l = low, m = mid+1, i = low;l <= mid && m <= high;i++) {
+				if(arr[l] < arr[m]) {
+						barr[i] = arr[l++];
+				}else{
+						barr[i] = arr[m++];
+				}
+		}
+		while(l<=mid) {
+				barr[i++] = arr[l++];
+		}
+		while(m<=high) {
+				barr[i++] = arr[m++];
+		}
+		for(i=low;i<=high;i++) {
+				arr[i] = barr[i];
+		}
+}
+void sort(char* arr, int low, int high) {
+		int mid;
+		if(low<high) {
+				mid = (high+low) / 2;
+				sort(arr, low, mid);
+				sort(arr, mid+1, high);
+				merge(arr, low, mid, high);
+		}else{
+				return;
+		}
+}
+void fillarray(char* arr, int size) {
+		srand((unsigned)time(NULL));
+		int i;
+		for(i=0;i<size;i++) {
+				arr[i] = rand() % 100;
+		}
+}
 
 int main(int argc, char** argv) {
-		struct node* head = build_node(10, "head");
-		struct node* two = build_node(20, "two");
-		struct node* three = build_node(30, "three");
-
-		head->next = two;
-		two->next = three;
-		traverse_list(head);
-
-		printf("Inserting a node at the head of the linked list....\n");
-		insert_node(&head, 500, "new");
-
-		traverse_list(head);
-
-		free_list(head);
+		int SIZE = MAX;
+		char array[SIZE];
+		fillarray(array, SIZE);
+		printarray(array, SIZE);
+		sort(array, 0, SIZE-1);
+		printf("Final output\n");
+		printarray(array, SIZE);
 
 		return 0;
+}
 
-}
-struct node* build_node(int data, const char* name) {
-		struct node* node = malloc(sizeof(struct node));
-		if(node==NULL) {
-				fprintf(stderr, "memory allocation failed\n");
-				exit(1);
-		}
-		node->data = data;
-		node->next = NULL;
-		printf("%s node successfully created\n", name);
-		return node;
-}
-void traverse_list(struct node* head) {
-		while(head != NULL) {
-				printf("data: %d\n", head->data);
-				head = head->next;
-		}
-}
-void free_list(struct node* head) {
-		struct node* tmp = NULL;
-		while(head != NULL) {
-				tmp = head;
-				head = head->next;
-				free(tmp);
-				tmp = NULL;
-				printf("node successfully freed\n");
-		}
-}
-void insert_node(struct node** head, int data, const char* name) {
-		struct node* new = malloc(sizeof(struct node));
-		if(new==NULL) {
-				fprintf(stderr, "memory allocation failed\n");
-				exit(1);
-		}
-		new->data = data;
-		new->next = *head;
-		*head = new;
-		printf("%s node successfully inserted at front\n", name);
-}

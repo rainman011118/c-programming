@@ -15,7 +15,7 @@ void bin_16(unsigned p) {
 		unsigned i;
 		for(i=1 << 15;i>0;i=i/2) {
 				(p & i) ? printf("1") : printf("0");
-/* I think what is going on here is that 1 << 15 = 2^15 = 32,768. When you 1/2 this 15 times you get down to 1.
+/* I think what is going on here is that 1 << 15 = 2^15 = 32,768. When you 1/2 this 15 times you get down to 2.
 7 & 4 = 0111 & 0001 = 1
 7 & 2 = 0111 & 0010 = 1
 7 & 1 = 0111 & 0001 = 1
@@ -33,7 +33,6 @@ int main(void) {
 
 		bin_16(7);
 		bin_16(4);
-
 
 		return 0;
 

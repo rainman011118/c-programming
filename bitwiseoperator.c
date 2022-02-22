@@ -1,13 +1,24 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int a = 12, b = 25;
     printf("Output = %d\n", a | b);
     puts("The bitwise operator returns the decimal representation of 8 in binary");
+
+	/*Important difference here:
+	 '&' = BITWISE and
+	 '&&' = LOGICAL 
+	 (Bitwise performs the & on each bit, whereas, Logical returns the BOOLEAN value 0 or 1).
+	 So as below, 13&25 = 9;  13 && 25 = 1; (This is the equivalent of saying: 13 != 0, 25 != 0 (so both return TRUE TRUE))
+	 In other words: If both the operands are non-zero, then the condition returns TRUE (1).
+	 ALSO: with logical &&, if the first statement (left part) is NOT TRUE, it doesn't need to check the RIGHT statement. (Bitwise & will check both LEFT and RIGHT everytime).	 */
+	int and = 13 & 25;
+	int and_and = 13 && 25;
+	printf("and = %d\n", and);
+	printf("and_and = %d\n", and_and);
+
     return 0;
 }
-
 /*
 12 = 00001100
 25 = 00011001

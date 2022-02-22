@@ -1,0 +1,85 @@
+# main headers used for sockets:
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<errno.h>
+#include<string.h> //used for the htons()
+
+#include<sys/socket.h>
+#include<sys/types.h>
+#include<net/inet.h>
+#include<netdb.h>
+#include<arpa/inet.h>
+
+##################  SEE: https://beej.us/guide/bgnet/html//index.html ###########################
+
+# sockaddr_in holds the info, family, port, pointer to ip address.
+ 		struct sockaddr_in SA{
+				short int				sin_family;		# AF_INET or AF_INET6
+				unsigned short int		sin_port;		# Port number
+				struct in_addr			sin_addr;		# ip address
+				unsigned char			sin_zero[8];	# same size as struct sockaddr
+		}
+# in_addr holds the actual ipaddress, so is referenced via: .sin_addr.s_addr = 
+		struct in_addr IA{
+				uint_32_t 				s_addr;
+		}
+########################  OLD WAY OF DOING IT  ##############################################
+		int sockfd, clientsocket;
+		struct sockaddr_in SA;
+		sockfd = socket(AF_INET, SOCK_STREAM, 0);
+		SA.sin_family = AF_INET;
+		SA.sin_port = htons(PORT_NUM);
+		SA.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+		bind(sockfd(struct sockaddr*)&SA, sizeof(SA));
+		listen(sockfd, 5)
+		client_socket = accept(sockfd, NULL, NULL); # Instead of NULL, NULL, these would be: BUFFER, sizeof(BUFFER), which stores the connector's ip address.
+#########################  NEW MODERN WAY OF DOING IT  ################################################
+########################   eg of CLIENT side, but can be used with SERVER side  ####################
+
+# Declare variables:
+		struct addrinfo hints, *res;
+		int sockfd, status;
+		char buf[INET6_ADDRSTRLEN];
+
+		memset(&hints, 0, sizeof(hints));
+		hints.ai_family = AF_UNSPEC;				//IPv4 or IPv6
+		hints.ai_socktype = SOCK_STREAM;			//TCP
+		hints.ai_flags = AI_PASSIVE;				//Fill in my IP for me (defaults to localhost)
+
+# use getaddrinfo() fn to call members of addrinfo. Assign it to int status for error checking. (returns 0 is successful.
+# NOTE: 1st argument(NULL) is usually the ip address, but NULL in this case works with AI_PASSIVE flag above and will default to INADDR_ANY.  If AI_PASSIVE is not set, but NULL is, then default is INADDR_LOOPBACK.
+		if((status = getaddrinfo(NULL, PORT, &hints, &res)) != 0) {
+				fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(status));
+				return(1);
+		}	
+		if((sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol) < 0) {
+				perror("[-] Error in socket");
+				exit(1);
+		}
+		if((connect(sockfd, res->ai_addr,  res->ai_addrlen)) == -1) {
+				close(sockfd);
+				perror("client: Error in connect");
+				exit(2);
+		}
+		inet_ntop(res->ai_family, get_in_addr((struct sockaddr*)res->ai_addr), buf, sizeof(buf));
+		printf("client: connecting to %s\n", buf);
+
+		freeaddrinfo(res);		//free the linked list, pointed to by res.
+
+# General order is as follows:
+# 	getaddrinfo()
+# 	socket()
+# 	bind()
+# 	listen() 
+# 	accept()
+
+
+
+
+
+
+
+

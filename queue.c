@@ -10,37 +10,38 @@ void insertIntoQueue(int x) {
 				return;
 		}
 		queue[count] = x;
-		count++;
+		printf("%d added to queue\n", x);
+		count++;									//  **********  follows what is added to queue  *****************
 }
 
-int removeFromQueue(int x) {
+int removeFromQueue() {
 		if(count==0) {
 				fprintf(stderr, "No elements to extract from queue\n");
 				return -1;
 		}
-		int result = queue[0];
+		int result = queue[0];			// pops first item from queue
 		for(int i=0;i<count-1;i++) {
-				queue[i] = queue[i+1];
+				queue[i] = queue[i+1];	// moves 2nd item in queue to front
 		}
-		count--;
-		return result;
+		count--;									//  **********  follows what is removed from queue ***************
+		return result;					// returns the item that was popped off front
 }
 
 int main(int argc, char** argv) {
-			insertIntoQueue(1);
-			insertIntoQueue(2);
-			insertIntoQueue(3);
-			insertIntoQueue(5);
+		insertIntoQueue(1);
+		insertIntoQueue(2);
+		insertIntoQueue(3);
+		insertIntoQueue(4);
+		insertIntoQueue(5);
 
-			int i;
-			//int localCount = count
-			for(i=0;i<count;i++) {//NOTE: This count will decrement each run of the program since the function 'removeFromQueue' decrements the count each run.  As an element is removed from the queue each time, the queue gets smaller, hence why it makes sense to decrement the count.  If you don't want the count to decrement each run of the program then you can add a temporary counter and use that in the loop instead.
-					//printf("%d ", queue[i]);
-					printf("%d ", removeFromQueue());
-			}
-
-			return 0;
-
+		int i, ret;
+		int len = sizeof(queue) / sizeof(queue[0]);
+		for(i=0;i<len;i++) {
+				if((ret = removeFromQueue()) == -1) {
+						break;
+				}else{printf("Popped [%d]\n", ret);}
+		}
+		return 0;
 }
 		
 //SEE: https://www.youtube.com/watch?v=Ra6p-Bmajlw

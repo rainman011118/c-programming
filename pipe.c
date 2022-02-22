@@ -6,7 +6,6 @@
 
 int main(void) {
 		int fd[2];
-
 		if(pipe(fd) == -1) {
 				perror("pipe");
 				exit(EXIT_FAILURE);

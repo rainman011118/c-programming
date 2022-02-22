@@ -12,6 +12,9 @@ and that sorted it.
 SSCANF takes 3 arguments:(source, %d, &num)
 This means, scan the data from source, into these
 format specifiers and store at &num) */
+
+
+//NOTE: This still isn't error free - If I input '5j', it completes fine, when it clearly shouldn't.  So the sscanf part is not checking each individual character, and only scans the first digit. So if it is an integer, it works fine, but if it is a non-integer, it fails.
 int main()
 {
     char userInput[8];

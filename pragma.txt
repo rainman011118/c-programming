@@ -1,0 +1,36 @@
+#pragma once 
+/*The way this pragma works is that it serves to inform the compiler to only define the contents(functions) in this header file once. Therefore, the 2 function declarations below are defined in their respective source file. So at compilation, they are defined in the source file, and then don't need to be defined any more times.*/
+
+// https://www.youtube.com/watch?v=u1e0gLoz1SU
+It is basically the same as:
+#ifndef <name of macro>
+#define <name of macro>
+		....macro definition here
+		....
+#endif //This is usually placed at the very end of the whole file (eg like return 0 would be).
+
+EXPLANATION: If this header file is included in multiple other files, it first checks to see if <macro> is defined in these other files.  If it isn't, then this definition is used and the header file included. Next time <macro> is seen (in another file), it is already defined, therefore does not need to be included.  
+
+***NOTE: functions can be declared unlimited times (with nor errors raised), but can only be defined once.  If defined more than once, it will raise an error.
+Header files should only contain declarations. Definitions should be separate in a source file.*/
+
+void sort_ascending(int*, int);
+void sort_descending(int*, int);
+
+/*eg:
+ 	file "grandparent.h"
+    #pragma once
+
+ 	struct foo {
+		int member;
+	};
+
+	file "parent.h"
+	#include"grandparent.h"
+
+	file "child.c"
+	#include"grandparent.h"
+	#include"parent.h"
+
+	*/
+

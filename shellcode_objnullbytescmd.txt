@@ -1,0 +1,7 @@
+
+#SEE: https://www.youtube.com/watch?v=FvLLPuaCZic
+#This command checks for NULL bytes in the shell code and removes them.
+
+objdump -d ./<file.o HERE> | grep '[0-9a-f]:' | grep -v 'file' | cut -f2 -d: | cut -f1-6 -d' ' | tr -s ' ' | sed 's/ $//g' | sed 's/ /\\x/g' | paste -d '' -s | sed 's/^/"/' | sed 's/$/"/g'
+
+

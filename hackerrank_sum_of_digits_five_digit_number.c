@@ -2,8 +2,11 @@
 #include<stdlib.h>
 
 // ################### HACKERRANK Sum of digits of a five digit number #############################
-int main(int argc, char** argv) {
 
+// SEE: this is a more complicated version of 'digit_checking.c' which I actually did many months after this file. however, for some reason, I did it this way (with modulus).
+// NOTE: Just ran this now (after completing digit_checking.c), and I input letters...and the total sum printed at the end was a huge negative number....so this program is not error proof...
+
+int main(int argc, char** argv) {
 		int x;
 		printf("Enter any 5 digit number: ");
 		scanf("%d", &x);
@@ -18,16 +21,16 @@ int main(int argc, char** argv) {
 						tmp = (x % 10);
 						sum += tmp;
 						x -= tmp;
-						printf("1st x = %d\n", x);
+						printf("%d remainder %d\n", x, sum);
 						if(x % 10 == 0) {
 								x = x / 10;
-								printf("x = %d\n", x);
+								printf("x is now = %d\n", x);
 						}else {
 								break;
 						}
 				}
 		}
-		printf("%d: %d\n", i, sum);
+		printf("Total sum of the 5 digits in the 5 digit number is: %d\n", sum);
 
 		return 0;
 }

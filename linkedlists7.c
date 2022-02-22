@@ -7,9 +7,8 @@ struct node {
 		struct node* next;
 };
 
-/*Using double pointer to create head node in list ##############################
-QUESTION: SHOULD I BE DOING IT THIS WAY OR SHOULD I BE DECLARING A NEW STRUCT NODE* NODE = malloc and doing it the normal way and then just assigning *head from there.....???
-*/
+//Using double pointer to create head node in list ##############################
+
 void create_node(struct node** head, int data) {
 		*head = malloc(sizeof(struct node));
 		if(*head==NULL) {
@@ -17,7 +16,8 @@ void create_node(struct node** head, int data) {
 				exit(1);
 		}
 		(*head)->data = data;		//These bits wouldn't work without the brackets
-		(*head)->next = NULL;		//-> symbol was not working unless brackets were used.
+		(*head)->next = NULL;		//-> symbol was not working unless brackets were used.QUESTION: SHOULD I BE DOING IT THIS WAY OR SHOULD I BE DECLARING A NEW STRUCT NODE* NODE = malloc and doing it the normal way and then just assigning *head from there.....???
+
 		printf("head node successfully created...\n");
 }
 

@@ -19,6 +19,6 @@ int main(int argc, char** argv) {
 		}
 		return 0;
 }
-//It works but I think I can simplify it in the if loop.  Whereby it doesn't have to go through all the possible range.  Since, once, div > 2, that's enough to prove it isn't prime.
+//It works but I think I can simplify it in the if loop.  Whereby it doesn't have to go through all the possible range.  Once div > 2, that's enough to prove it isn't prime.
 
 

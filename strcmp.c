@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
-/*This one took me ages to get to work.
-The placement of code segments makes a HUGE 
-difference. e.g. ret = strcmp(name1, name2).
-If I placed this with the other declarations up top,
-it didn't work.  It worked if I placed it after the
-stdin was input.  And also worked BEST when within the 
-conditional loop.*/
+//strcmp returns 3 different ints:
+//	<0 if size of string1 is less than string2
+//	>0 if size of string1 is more than string2
+//	0 == match.
+
 int main()
 {
     char name1[20] = "Jonny";
@@ -23,17 +21,12 @@ int main()
     //scanf("%s", name2);
     fgets(name2, 20, stdin);
 	printf("len = %ld. strlen counts the new line char because it was included by fgets. NULL terminator is automatically appended by fgets too but is not counted by strlen.\n", strlen(name2));
-    name2[strlen(name2) - 1] = 0;//This must be getting rid of the new line by replacing it with 0.
-    /*fgets doesn't work properly without the
-    'strlen -1' following it.  Seems the '/n' ch, 
-    causes the names not to match.*/
+    name2[strlen(name2) - 1] = 0;
 
-    if ((strcmp(name1, name2)) != 0)
-    {
+	int ret = strcmp(name1, name2);
+    if(ret != 0) {
         printf("Wrong! %s is not a match, guess again.\n", name2);
-    }
-    else
-    {
+    }else{
         printf("Bravo! It's a match! %s and %s\n", name1, name2);
     }
 

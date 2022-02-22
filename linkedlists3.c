@@ -11,7 +11,7 @@ void print_linkedlists(struct node* a) {
 				a = a->next;
 		}
 }
-/* NEED TO CHECK THIS FIRST BEFORE RUNNING IT...#########################
+/* NEED TO CHECK THIS FIRST BEFORE RUNNING IT...#######....ANSWER: Yes this will work fine.
 void free_linkedlists(struct node* a) {
 		struct node* tmp;
 		while(a != NULL) {

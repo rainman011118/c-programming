@@ -13,7 +13,7 @@ https://www.youtube.com/watch?v=aROgtACPjjg: Nesoacademy says that processors re
 typedef struct {
 		int test;
 		char k;
-		char str[8];
+		char str[7];
 		int* p;
 		short sh;
 	} Thing;
@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
 				data = *(((unsigned char*)&t) + i);
 				printf("%02x ", data);
 		}
+		printf("\n");
 		return 0;
 }
 
@@ -53,7 +54,7 @@ ff 00 27 5f b3 7f 00 00
 Each 2digits = 1 byte.
 0c 00 00 00 = the int test (4 bytes)
 6b = char k (1 byte)
-61 61 61 61 61 61 61 00 00 00 = char str[10] - all 10 bytes are taken.
+61 61 61 61 61 61 61 = char str[7] - 7bytes for chars (no padding required since it fills the 8 bytes)
 ac 2c 90 a1 de ff 7f 00 = &p(8bytes)
 ff 00 = short(2bytes) After this the no.'s are random garbage.
 

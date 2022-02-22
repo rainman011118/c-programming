@@ -8,8 +8,8 @@ typedef struct {
 
 int main(int argc, char** argv) {
 		Point p1 = {
-				.x = 12;
-				.y = -9;
+				.x = 15,
+				.y = -9
 		};
 
 		//Create 2 file handlers:
@@ -19,16 +19,27 @@ int main(int argc, char** argv) {
 		//create 2 places to store info:
 		char buffer_in[256], buffer_out[256];
 
-		//fopen_s is a variant of fopen........
 		//point.dat should be created as a new file in which the info (x and y) will be written to.
-		fopen_s(&out, "point.dat", "w");
+		out = fopen("point.dat", "wx");
 		if(out == NULL) {
+				perror("Error opening file");
 				return 1;
 		}
 		
-		sprintf_s(buffer_out, 256, "%d, %d\n", p1.x, p1.y);
-		fwrite(buffer_out, sizeof(char), strlen(buffer_out), out);
-		
+		//sprintf converts data to string format and prints it to buffer_out.
+		sprintf(buffer_out, "%d, %d\n", p1.x, p1.y);
+
+		//fwrite returns the number of bytes written hence why we assign it to size t variable
+		size_t bytes_written = fwrite(buffer_out, sizeof(char), strlen(buffer_out), out);
+ 
+		printf("Me just checking how many bytes of strlen(buffer_out) = %ld\nFile successfully written\n", strlen(buffer_out));
+		fclose(out);
+
+		//This if statement below is just a check to see if the correct number of bytes were written
+		if(bytes_written != strlen(buffer_out)) {
+				return 1;
+		}
+
 
 		return 0;
 }

@@ -15,8 +15,8 @@ int main()
     Books book2, book3;
     Books book1 = {"Lord of the Rings", "JRR Tolkein", 5005, 5.99};
     /*When I initially typed this as:
-	Books book1, book2, book3; //which was the declaration of vars.
-	book1 = //which was the assignment. 
+	Books book1, book2, book3; 
+	book1 = ...
 	it would not work.
 	For some reason it required 'Books book1 = '??
 	Also didn't require the pointer use below.
@@ -27,14 +27,14 @@ int main()
     printf("Pages in book2: %d\n", book2.pages);
     /*You CANNOT ASSIGN STRINGS TO CHAR ARRAYS!!!
 	So below will not work!
+    //Books *bk2;
+    //bk2 = &book2;
+    // *(*bk2).author = "Hello";
+    //printf("Author book2: %s\n", book2.author);
 	A string can only be assigned to an array at 
 	declaration.
 	Hence STRCPY must be used
 	*/
-    //Books *bk2;
-    //bk2 = &book2;
-    //*(*bk2).author = "Hello";
-    //printf("Author book2: %s\n", book2.author);
 	strcpy(book2.author, "George RR Martin");
 	printf("Game of Thrones author is: %s\n", book2.author);
 

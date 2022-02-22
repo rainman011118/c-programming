@@ -10,15 +10,17 @@ int main(int argc, char** argv) {
 	int id = fork();
 	int n;
 	if(id == 0) {
+		printf("%d executing ...CURRENT ID: %d, PARENT ID: %d\n", id, getpid(), getppid());
 		n = 1;
 	} else {
+		printf("%d executing ...CURRENT ID: %d, PARENT ID: %d\n", id, getpid(), getppid());
 		n = 6;
 	}
 	
 	if(id != 0) {
-		wait(NULL);//Why isn't this working???? - Because NULL has to be input as the argument...found this in the comments!!!
+		printf("%d waiting...\n", id);
+		wait(NULL);
 	}
-
 	//This wait process will cause main to pause, until child(0) completes. i.e. 12345\n678910.
 
 	int i;
@@ -29,7 +31,6 @@ int main(int argc, char** argv) {
 	printf("\n");
 
 	return 0;
-
 }
 
 /*The loop will print both processes main and child.  fflush(stdout) is used to clear the printf buffer otherwise printf will store all the info (from both branches, child and parent) and print it all at once = parallel. Instead we want it to print out all the elements from one branch, followed by all the elements from the other. Then we can distinguish between which output is from main and which is from child.

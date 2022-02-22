@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+//strchr basically is 'string check'
+
 /* strchr(str, char) searches the occurrence of a 
 specified character in a given string and returns
-the pointer to it.*/
+the pointer to it.  THIS LAST BIT IS IMPORTANT AND THEREFORE REQUIRES THE ASSIGNMENT TO A VARIABLE (eg ptr = strchr...) Otherwise, it will have nothing to return the pointer to. */
 int main()
 {
     const char str[] = "C programming is great!!";

@@ -31,7 +31,7 @@ special_function get_function(char* s) {/*the reason this is called special_func
 
 int main(int argc, char** argv) {
 		if(argc != 4) {
-				printf("USAGE\n\tfunction_caller f arg1 arg2\n");
+				printf("USAGE:\tfunction_caller f arg1 arg2\n");
 				exit(1);
 		}/*This checks to see if 4 argc are passed on cmd line.  (E.g. ./a.out add 5 7 = 4 x argc)*/
 		special_function f = get_function(argv[1]);
@@ -39,8 +39,12 @@ int main(int argc, char** argv) {
 				printf("Invalid function\n");
 				exit(1);
 		}
+		printf("a = %s\nb = %s\n", argv[2], argv[3]);
+//		printf("sizeof(argv[2]) = %lu\n", sizeof(argv[2]));
 		int a = atoi(argv[2]);
 		int b = atoi(argv[3]);
+		printf("a = %d\nb = %d\n", a, b);
+//		printf("Sizeof(a) = %lu\n", sizeof(a));
 		/*These represent the 3rd and 4th args passed on cmd line.  Not sure why atoi is used...?*/
 		printf("a: %d, b: %d, %s(a,b): %d\n", a, b, argv[1], f(a,b));
 
