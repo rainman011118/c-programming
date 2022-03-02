@@ -32,12 +32,11 @@ void sort(char *arr, int low, int high) {
 		merge(arr, low, mid, high);
 	}
 }
-// *******  can tweak to get ceiling and floor numbers in search  *********************
+// ********  Linear binary search method  *********************
 int binarysearch(char *arr, int target, int start, int end) {
 	int mid;
 	while(start <= end) {
 		mid = start + (end - start) / 2;
-		//
 		if(target < arr[mid]) {
 			end = mid - 1;
 		}else if(target > arr[mid]) {

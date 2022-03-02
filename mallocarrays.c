@@ -16,7 +16,7 @@ int* create_int_array(int len, int multiplier) {
 }
 
 int main() {
-		int array_len = 10;
+		int array_len = 5;
 		//Create 3 arrays and fill the contents with 10 ints:
 		int* a = create_int_array(array_len, 10);
 		int* b = create_int_array(array_len, 100);
@@ -39,10 +39,10 @@ int main() {
 						printf("array_pointer[%d][%d]: %d\n", i, j, array_pointer[i][j]);
 				}
 		}
-		free(array_pointer);
 		free(a);
 		free(b);
 		free(c);
+		free(array_pointer);
 
 		return 0;
 }

@@ -60,24 +60,28 @@ void clear_stack(char* stack) {
 				printf("clearing stack...\n");
 				stack[top--] = 0;
 		}
+		printf("stack cleared..\n");
 }
 
 //  *************  tree in the stack form  *************************
 void check_right(char* right, int data, char* limit) {
+		printf("Checking right with %d\n", data);
 		int tmp;
-		if(right != limit-1) {
+		if(right != limit) {
 				if(*right != 0) {
 						if(data > *right) {
-								check_right(right++, data, limit);
+								check_right(++right, data, limit);
 						}else{
+								printf("right....inside loop\n");
 								tmp = *right;
 								*right = data;
-								*(right++) = tmp;
-								//RIGHT++;
+								*(++right) = tmp;
+								RIGHT++;
 						}
 				}else{
+						printf("right zero....outside loop\n");
 						*right = data;
-						//RIGHT++;
+						RIGHT++;
 						top++;
 				}
 		}else{
@@ -85,20 +89,23 @@ void check_right(char* right, int data, char* limit) {
 		}
 }
 void check_left(char* left, int data, char* limit) {
+		printf("Checking left with %d\n", data);
 		int tmp;
 		if(left != limit) {
 				if(*left != 0) {
 						if(data < *left) {
-								check_left(left--, data, limit);
+								check_left(--left, data, limit);
 						}else{
+								printf("left....inside loop\n");
 								tmp = *left;
 								*left = data;
-								*(left--) = tmp;
-								//LEFT--;
+								*(--left) = tmp;
+								LEFT--;
 						}
 				}else{
+						printf("left zero....outside loop\n");
 						*left = data;
-						//LEFT--;
+						LEFT--;
 						top++;
 				}
 		}else{
@@ -110,12 +117,12 @@ void array_stack(char* tree, int data, int size) {
 		char* upperbound = &tree[size];
 		int mid = size / 2;
 		if(isempty()) {
-				top++;
+				top++;				// At present, RIGHT/LEFT just give direction....not much else. Can I get rid globals....??
 				tree[mid] = data;
 				RIGHT = &tree[mid+1];
 				LEFT = &tree[mid-1];
 		}else if(data > tree[mid]) {
-				check_right(RIGHT, data, upperbound);
+				check_right(RIGHT, data, upperbound); 
 		}else{
 				check_left(LEFT, data, lowbound);
 		}
@@ -124,8 +131,9 @@ void array_stack(char* tree, int data, int size) {
 void print_tree(char* tree, int size) {
 		int i;
 		for(i=0;i<size;i++) {
-				printf("tree[%d] = %d\n", i, tree[i]);
+				printf("%d  ", tree[i]);
 		}
+		printf("\n");
 }
 
 
@@ -166,10 +174,9 @@ void pop_stack(char* stack) {
 		int data;
 		while(!isempty()) {
 				data = pop();
-				printf("display pop data: %d\n", data);
+				printf("popping stack data: %d\n", data);
 		}
-//		printf("\n");
-//		printf("display: stack empty\n");
+		printf("popping stack: now empty\n");
 }
 void freeall(struct node* root) {
 		if(root==NULL) {
@@ -185,38 +192,46 @@ void freeall(struct node* root) {
 
 int main(int argc, char** argv) {
 		//binary tree
-/*		struct node* root = NULL;
+		struct node* root = NULL;
 		insert(&root, 100);
 		insert(&root, 50);
-		insert(&root, 127);
-		*/
-		/*
+		insert(&root, 127);// These can just as well be 'push' instead of 'insert'.
+		
 		preorder(root);
 		printf("root->data = %d\n", root->data);
 		printf("root->left->data = %d\n", root->left->data);
-*/
-		/*
+		
 		// binary tree with push and pop
 		printf("top = %d\n", top);
 		peek();
-		pop_stack(stack);
-		peek();
+//		pop_stack(stack);  // Use either or..
 		clear_stack(stack);
 		printf("top = %d\n", top);
-*/
-		// tree stack form
+
+/*		// tree stack form  this isn't really a stack, but more a binary tree fill......
 		puts("Trying the tree_stack");
 		array_stack(tree_stack, 99, LIMIT);
 		array_stack(tree_stack, 66, LIMIT);
 		array_stack(tree_stack, 101, LIMIT);
 		array_stack(tree_stack, 100, LIMIT);	
-//		array_stack(tree_stack, 122, LIMIT);		
-//		array_stack(tree_stack, 127, LIMIT);		// ABOVE 3 work fine, but seg faults here..problem with right and RIGHT.
+		array_stack(tree_stack, 122, LIMIT);		
+		array_stack(tree_stack, 127, LIMIT);		
+		array_stack(tree_stack, 50, LIMIT);
+		array_stack(tree_stack, 71, LIMIT);
 		print_tree(tree_stack, LIMIT);
-		printf("mid = %p\n", &tree_stack[5]);
-		printf("RIGHT = %p\n", RIGHT);
-		printf("LEFT = %p\n", LEFT);
-		//freeall(root);
+
+		if(RIGHT >= tree_stack+LIMIT){
+				printf("RIGHT is out of bounds\n");
+		}else{
+				printf("RIGHT = %d  add: %p\n", *RIGHT, RIGHT);
+		}
+		if(LEFT >= tree_stack+LIMIT){
+				printf("LEFT is out of bounds\n");
+		}else{
+				printf("LEFT = %d add: %p\n", *LEFT, LEFT);
+		}
+*/
+		freeall(root);
 
 		return 0;
 }
