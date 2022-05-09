@@ -20,6 +20,10 @@ int main(void) {
 	char* arg1 = "-lh";
 	char* arg2 = "/home/rain/Testfolder";//the target you want the command to act upon
 
+	//EXECV ARGS = PATH/PROGRAM, ARRAY OF STRINGS
+	char* shell = "//bin/sh";
+	char* shellargs[] = {shell, NULL};
+
 	if(pid == -1) {
 			return 1;
 	}
@@ -29,7 +33,9 @@ int main(void) {
 	} else {
 	//parent process
 			wait(NULL);
-			printf("Parent process now executes...Success.\n");
+			printf("Parent process now executes this shell....\n");
+			execv(shell, shellargs);
+			printf("If you read this then the shell didn't execute :(\n");
 	}
 
 	return 0;

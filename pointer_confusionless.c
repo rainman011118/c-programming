@@ -4,7 +4,7 @@
 void inputting_strncpy(char* array, int n) {
 		int i = 0;
 		printf("address array in strncpy: %p\n", array);//array here = Same as main.
-		printf("address &array in strncpy: %p\n", &array);//&array = DIFFERENT....why? (ANSWER: address of array gets passed as copy to function, which then creates its own pointer, ince arrays decay to pointers, therefore the local pointer address will be different from main()).
+		printf("address &array in strncpy: %p\n", &array);//&array = DIFFERENT....why? (ANSWER: address of array gets passed as copy to function, which then creates its own pointer, since arrays decay to pointers, therefore the local pointer address will be different from main()).
 		strncpy(array, "ABCDEFGHIJKLMNO", n);//strn copies all 12 but does not add a NULL....:S
 		printf("in strncpy = %s\n", array);
 }

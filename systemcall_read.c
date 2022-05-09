@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<unistd.h>
 #include<fcntl.h>		// This was essential 
+#include<string.h>
 
 // ********************  SYSTEM CALLS FOR READ ADN WRITE  ***************************
 

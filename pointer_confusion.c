@@ -16,7 +16,7 @@ void inputting(int n, char *p) {
 		printf("address p in func = %p\n", p);
 		printf("address &p in func = %p\n", &p);
 		puts("Enter something...");
-		while((c = getchar()) != EOF && c != '\n' && i <15) {// CAREFUL SINCE NO BOUNDS CHECKING so can write infinite...........So what I probably should do is create size varialble of just use i as counter..<15..........SORTED! :)
+		while((c = getchar()) != EOF && c != '\n' && i <15) {// CAREFUL SINCE NO BOUNDS CHECKING so can write infinite...........So what I probably should do is create size varialble or just use i as counter..<15..........SORTED! :)
 				p[i] = c;
 		//		(*p)[i] = c;
 				i++;

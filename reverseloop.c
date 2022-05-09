@@ -2,19 +2,21 @@
 
 void loop(int x[], int size) {
 		for(int i=0; i<size; i++) {
-				printf("numbers[%d]: [%d]\n", i, x[i]);
+				printf("[%02d] ", x[i]);
 		}
+		printf("\n");
 }
 void reverseloop(int y[], int size) {
 		for(int i=(size-1); i>=0; i--) {
-				printf("numbers[%d]: [%d]\n", i, y[i]);
+				printf("[%02d] ", y[i]);
 		}
+		printf("\n");
 }
 void ptrloop(int *p, int size) {
 		for(int i=0; i<size; i++, p++) {
-				printf("%d: %d\n", i, *p);
+				printf("%02d ", *p);
 		}
-		printf("ptr after loop = %p\n", p);
+		printf("\nptr after loop = %p\n", p);
 }
 void bigger(int *arr, int size) {
 		int sum = 0;
@@ -22,8 +24,9 @@ void bigger(int *arr, int size) {
 		for(int i=0; i<size; i++, arr++) {
 			//	printf("%d %d\n", i, *arr);//prints garbage values...when passing ptr.? SEE ANSWER AT BOTTOM!
 				sum = (*arr) * 2;
-				printf("%d: %d\n", i, sum);
+				printf("%02d ", sum);
 		}
+		printf("\n");
 //		return sum;
 }
 int main(int argc, char** argv) {

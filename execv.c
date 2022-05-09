@@ -12,14 +12,14 @@ int main(void) {
 	char* args[] = {binaryPath, NULL}; //Must be NULL terminated, otherwise, it compiles but goes straight to print function below.
 //	printf("sizeof(binaryPath) = %ld\nsizeof(args) = %ld\n", sizeof(binaryPath), sizeof(args));
 
-/*		//Just checking some stuff..
-	char* ptr = binaryPath;
+		//Just checking some stuff..
+/*	char* ptr = binaryPath;
 	int len = strlen(binaryPath);
 	printf("len = %d\n", len);
 	int i = 0;
 	// This prints out the hexadecimal values
 	while(i<len) {
-			printf("%x", *ptr++);			// '%#x' adds '0x' before the value (Not good in this instance since every char gets it). alternative is %hhx.
+			printf("%x ", *ptr++);			// '%#x' adds '0x' before the value (Not good in this instance since every char gets it). alternative is %hhx.
 			i++;
 	}
 	printf("\n");
@@ -30,7 +30,7 @@ int main(void) {
 
 */
 	execv(binaryPath, args); 
-	//printf("if you are seeing this, execv didn't work\n");
+	printf("if you are seeing this, execv didn't work\n");
 	/*This printf will not execute because execv family overrides the c program with whatever program it is executing (-ls).
 	 The way around this is to add 'fork()'.
 	 */
