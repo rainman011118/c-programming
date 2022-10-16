@@ -5,26 +5,29 @@
 
 //Program to check a 3 digit number input.
 
-//UNFINISHED............sorted with the ch = getchar() method. this getchar() is particularly useful here as it deals with the automatic conversions between char and int, that I was having problems with previously.
+//FINISHED............ with the ch = getchar() method. this getchar() is particularly useful here as it deals with the automatic conversions between char and int, that I was having problems with previously.
 
 int main(int argc, char** argv) {
-		int ch = 0;
+		char chh = 53; // this is just for learning purposes.	
+		int ch = 53;
+		printf("ch = 0x%08x, %d, %c\n", ch, ch, ch);
+		printf("chh = 0x%x, %d, %c\n", chh, chh, chh); // I just added this to compare 1byte to 4byte in hex.  0-127 = 2digits output. But as soon as you go 128+, it outputs the whole 8bits, I guess because it gets SIGN EXTENDED to negative. i.e. I don't have to specify width.
+
 		int sum = 0;
-		int i = 0;
-		int max_num = 0;
+		int max_num = 0; // I have used this like a timer, so each time a digit is registered in the while loop, it increments.  Once 3 digits are recorded, the loop condition is breached.  (I guess an alternative is to use a pointer...)
 		while((ch = getchar()) != '\n' && ch != EOF && max_num < 3) {
-				//if(isdigit(ch) != 0) {//Both are exactly the same
-				if(isdigit(ch)) {
-//				if(ch >= '0' && ch <= '9') {//This is the verbose equivalent of isdigit()
-						ch = ch-'0';
-						printf("Number[%d] = %d\n", ++i, ch);
-						sum += ch;
-						max_num++;
-				//Everything below this is irrelevant for the question's aim.
-				}else if(isalpha(ch)) {
-						printf("Invalid input. You entered a letter: %c\n", ch);
-						break;
-				}
+			if(isdigit(ch)) {
+//			if(ch >= '0' && ch <= '9') {//This is the verbose equivalent of isdigit()
+				printf("ch formats: 0x%02x %d %c\n", ch, ch, ch);
+				ch = ch-'0';
+				printf("Number = %d\n", ch);
+				sum += ch;
+				max_num++;
+		//Everything below this is irrelevant for the question's aim.
+			}else if(isalpha(ch)) {
+				printf("Invalid input. You entered a letter: %c\n", ch);
+				break;
+			}
 		}
 		printf("The sum of %d digits = %d\n", max_num, sum);
 

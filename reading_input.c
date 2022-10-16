@@ -6,7 +6,8 @@
 
 // FINALLY GOT IT ALL WORKING...
 // READS ALL TYPES OF CHARS BUT ONLY SELECTS THE CORRECT ONES
-void clearbuffer();
+
+//void clearbuffer();
 void scanf_int(int*, int*);
 void fgets_char(int*, int*);
 void free_all(int** root, int rows);
@@ -17,10 +18,13 @@ int** make_matrix(int rows, int cols);
 int main(int argc, char** argv) {
 		int** root = NULL;
 		char* ptr = NULL;
-		int SIZE, LEN, ROWS, COLS, choice;
+		int SIZE, LEN, ROWS, COLS;
+		long choice;
 		SIZE = 256;
 		char input[SIZE];
 		puts("A test programme to make a matrix.\nUsing 1 of 2 methods: scanf(with ints) or fgets.\nI still get confused with the int and char and ASCII interpretation.\nBut each of these methods should work fine now.");
+
+		// TAKE INPUT
 		puts("Please select the corresponding number for the method you wish to use for input\nscanf_int (1)\nfgets_char (2)");
 		fgets(input, SIZE-1, stdin);
 		LEN = strlen(input);
@@ -42,7 +46,7 @@ int main(int argc, char** argv) {
 		choice = strtol(input, &ptr, 10);//THIS RETURNS ZERO IF FAILS
 		//ERROR CHECKING
 		if(choice) {
-				printf("Choice = %d\n", choice);
+				printf("Choice = %ld\n", choice);
 				if(choice == 1) {
 						printf("Choice 1 selected...\n");
 //						clearbuffer();//NOTE REQUIRED SINCE EACH FN SEEMS TO HAVE ITS OWN BUFFER
@@ -56,7 +60,7 @@ int main(int argc, char** argv) {
 						return 1;
 				}
 		}else{
-				printf("ERROR: Choice = %d\n", choice);
+				printf("ERROR: Choice = %ld\n", choice);
 				exit(2);
 		}
 
@@ -64,6 +68,7 @@ int main(int argc, char** argv) {
 		root = make_matrix(ROWS, COLS);
 		fill_matrix(root, ROWS, COLS);
 		display(root, ROWS, COLS);
+
 		//JUST DOUBLE CHECKING THE BUFFER CONTENTS AGAIN....IT IS THE SAME AS EARLIER EVEN AFTER RETURNING...
 		printf("printing buffer contents....\n");
 		for(int i=0;i<LEN;i++) {

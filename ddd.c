@@ -47,22 +47,6 @@ int binarysearch(char* arr, int start, int end, int target) {
 		}
 		return -1;
 }
-//RECURSION METHOD
-int binarysearchrecursion(char* arr, int start, int end, int target) {
-		int mid = start+(end-start)/2;
-		int hit;
-		while(start<=end) {
-				if(target==arr[mid]) {
-						return mid;
-				}else if(target<arr[mid]) {
-						hit = binarysearchrecursion(arr, start, mid-1, target);
-				}else{
-						hit = binarysearchrecursion(arr, mid+1, end, target);
-				}
-				return hit;
-		}
-		return -1;
-}
 void display(char* arr, int size) {
 		int i;
 		for(i=0;i<size;i++) {
@@ -85,21 +69,13 @@ int main(int argc, char** argv) {
 		int val, target;
 		printf("Please enter a number betwwen 0-100\n");
 		scanf("%d", &target);
-		//Recursion
-		if((val = binarysearchrecursion(array, start, end, target)) == -1) {
-				printf("Error, value not found!\n");
-				exit(1);
-		}else{
-				printf("Value %d found at index %d\n", target, val);
-		}
-		//iterative
-		/*if((val=binarysearch(array, start, end, target)) == -1) {
+		if((val=binarysearch(array, start, end, target)) == -1) {
 				printf("Value not found in array\n");
 				exit(-1);
 		}else{
 				printf("Value %d found at index %d\n", target, val);
 		}
-*/
+
 		return 0;
 }
 

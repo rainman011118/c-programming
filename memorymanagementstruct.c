@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 		
 		Person p1;
 		p1.data = 22;
-		p1.name = "Cyclops";//This worked!?  I didn't have to use strcpy??? When I did use strcpy, it SEGFAULTED! This may be because p1.name is a pointer to chars but of unknown size, so copying a string literal to unknown = SEGFAULT. (If it was an array, strcpy would work fine)  But if you assign a string literal to the pointer, it is creating space...that doesn't exist.
+		p1.name = "Cyclops";//This worked!?  I didn't have to use strcpy??? When I did use strcpy, it SEGFAULTED! This may be because p1.name is a pointer to chars but of unknown size, so copying a string literal to unknown = SEGFAULT. (If it was an array, strcpy would work fine)  But if you assign a string literal to the pointer, it is creating space...that doesn't exist.  DOUBLE CHECKING THIS, IT CAN'T BE CORRECT. SINCE IT IS BASICALLY SAYING THAT P1.NAME POINTS TO A NEW STRING SOMEWHERE, AND NOT NECESSARILY WITHIN THE STRUCT.  THEREFORE, IT IS BETTER TO MALLOC IT TO SPECIFY SIZE.
 		p1.age = 103;
 		printf("dot method: %d\n%s\n%d\n", p1.data, p1.name, p1.age); 
 		

@@ -7,7 +7,7 @@ int main(void) {
 		scanf("%d", &rows);
 		for(i=0;i<rows;++i) {
 				for(j=0;j<=i;++j) {
-						printf("%d ", number);
+						printf("%02d ", number);
 						++number;
 				}
 				printf("\n");

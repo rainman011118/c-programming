@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-//TWO SEPARATE PRGRAMS: ONE DEALING WITH ARGC AND ARGV, THE OTHER WITH SCANF
+//TWO SEPARATE PROGRAMS: ONE DEALING WITH ARGC AND ARGV, THE OTHER WITH SCANF
 //THIS SCANF WORKS FINE, EVEN WITH LOADS OF INPUT....
 //BUT HOW CAN I REJECT INPUT THAT IS GREATER THAN 1CHAR????
 
@@ -12,6 +12,8 @@ int main(int argc, char** argv) {
 		char dog[] = "DOG";
 		
 		if(argc == 1) {
+				printf("Incorrect use.  Please input '%s <password>'\n", argv[0]); 
+				printf("argc = %d\n", argc);
 				;//I had to add this argc == 1 bit because it was segfaulting if I didn't check for this
 				//If I entered './a.out '(NOTE THE SPACE), it went straight to the else clause and must interfere with the check = strcmp...???
 		}else if(argc > 2) {

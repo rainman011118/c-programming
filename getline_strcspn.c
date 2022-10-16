@@ -16,9 +16,10 @@ int main(int argc, char** argv) {
 		//Can be done both ways: with a return variable to hold the number of chars (or -1) if fails. Or using the if loop to check for failure.
 		if((characters = getline(&buffer, &n, stdin)) == -1) {
 				printf("Error with getline\n");
+				free(buffer);
+				buffer = NULL;
 				return 1;
 		}
-		
 		//Pick either one of the below (strlen or strcspn) BOTH WILL REMOVE THE LINGERING '\n'.
 //		buffer[strlen(buffer)-1] = 0;
 

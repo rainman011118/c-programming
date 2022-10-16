@@ -2,7 +2,6 @@
 #include<stdlib.h>
 
 int main(int argc, char** argv) {
-
 		char *name = argv[1];
 		if(argc == 1 || argc > 2) {
 				printf("Invalid input. Enter 1 env variable after a.out\n");

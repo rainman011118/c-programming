@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
 // RECURSIVE CALL FUNCTION: 
 void binary_rep(unsigned q) {
 		if(q>1) {

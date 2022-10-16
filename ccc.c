@@ -23,15 +23,16 @@ int main(int argc, char** argv) {
 		C[0] = 'Q';
 		printf("C array= %s\n", C);
 		free(A);
-
-
+//--------------------------------------------------------------------------
 		puts("Lets try using getline");
 		char* buffer = malloc(64*sizeof(char));
 		if(buffer==NULL) {
 				fprintf(stderr, "Memory allocation failed\n");
 				exit(2);
 		}
-		size_t len = sizeof(buffer);
+//		size_t len = sizeof(buffer);// CAREFUL HERE, THIS IS INCORRECT AS SIZEOF = SIZE OF POINTER.
+		size_t len = strlen(buffer);
+		printf("len buffer = %ld\n", len);
 		int characters;
 		FILE* fp = fopen("/home/rain/cfolder/file.txt", "r");
 		if(fp==NULL) {
@@ -40,6 +41,9 @@ int main(int argc, char** argv) {
 		}
 		if((characters = getline(&buffer, &len, fp))==-1) {
 				perror("Error: ");
+				free(buffer);
+				buffer = NULL;
+				fclose(fp);
 				exit(3);
 		}else{
 				printf("characters = %d\n", characters);

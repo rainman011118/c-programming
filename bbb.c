@@ -1,72 +1,35 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<string.h>
 
-struct node{
-		int data;
-		struct node* right;
-		struct node* left;
-};
 
-struct node* create_node(int data);
-void insert(struct node** root, int data);
-void printall(struct node* r, int data);
-void freeall(struct node* root);
+// Just practicing byte targeting and how input is taken...it won't let me record 'A' though...? Only numbers... Why doesn't 'A' get registered as 65??
 
-int main(int argc, char* argv[]) {
-		int data = 100;
-		struct node* root = NULL;
-		root = create_node(data);
-		insert(&root, 10);
-		insert(&root, 20);
-		insert(&root, 30);
-		insert(&root, 40);
-		insert(&root, 120);
-		insert(&root, 150);
-		insert(&root, 200);
-		printall(root, data);
+int main(int argc, char** argv) {
+		int num;
+		char* p = (char*)&num+3;
+		puts("Enter a number");
+		scanf("%d", &num);
+		printf("num = %d, num = %c\n", num, num);
+		printf("num = 0x%x\n", num);
+
+		printf("Starting add: %p\n", p);
+
+		for(int i=0;i<4;i++, p--) {
+				printf("%p  %x\n", p, *p);
+		}
+		// Resets the pointer to original starting position (NOTE: p+4 didn't work. I had to assign it)
+		p = p+4;
+//		printf("\n%p\n", p);
+//		printf("%08x\n", *p);
+
+		puts("Print bytes out in big endian format (NOTE: I have used signed char, therefore, sign is extended. e.g. 128, 32768 etc");
+		for(int i=0;i<4;i++, p--) {
+				printf("%02x ", *p);
+		}
 		printf("\n");
 
-		freeall(root);
 		return 0;
-}
-struct node* create_node(int data) {
-		struct node* node = malloc(sizeof(struct node*));
-		if(node==NULL) {
-				fprintf(stderr, "Memory allocation failed\n");
-				exit(1);
-		}
-		node->data = data;
-		node->right = NULL;
-		node->left = NULL;
-		printf("node created (%d)\n", data);
-		return node;
-}
-void insert(struct node** root, int data) {
-		if(*root==NULL) {
-				*root = create_node(data);
-		}else{
-				if(data<=(*root)->data) {
-						insert(&(*root)->left, data);
-				}else{
-						insert(&(*root)->right, data);
-				}
-		}
-}
-void printall(struct node* r, int data) {
-		if(r) {
-				printall(r->left, data);
-				printf("%d ", r->data);
-				printall(r->right, data);
-		}
-}
-void freeall(struct node* root) {
-		if(root) {
-				freeall(root->left);
-				freeall(root->right);
-				printf("freeing node %d\n", root->data);
-				free(root);
-		}
-}
 
+}
 
 

@@ -11,7 +11,7 @@ typedef struct {
 int main(int argc, char** argv) {
 		int i;
 		Thing t = {12, 'k', "ABCDEFGHIJ", &i, 255};// ff00 = 255, 0001 = 256, 0101 = 257
-		printf("%lu\n", sizeof(t));
+		printf("%lu\n", sizeof(t));// will output 32, since it adds in increments of 8bytes.
 		unsigned char data;
 		for(i=0; i<sizeof(t); i++) {
 				if(i % 4 == 0) {

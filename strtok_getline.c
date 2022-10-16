@@ -24,19 +24,21 @@ int main(int argc, char** argv) {
 
 //##########################################################################################
 //TRYING NOW WITH TAKING INPUT, THEN SPLITTING/PARSING THE EMAILS.....
-		char* emails = malloc(256*sizeof(char));
+		size_t len = 256;
+		ssize_t check;
+		char* emails = malloc(len*sizeof(char));
 		if(emails==NULL) {
 				fprintf(stderr, "Memory allocation failed\n");
 				exit(1);
 		}
-		size_t len = 0;
-		ssize_t check;
 		puts("Lets try entering some emails manually and using getline, then strtok");
 		if((check = getline(&emails, &len, stdin)) == -1) {
 				fprintf(stderr, "getline failed\n");
+				free(emails);
+				emails = NULL;
 				exit(2);
 		}
-		emails[strcspn(emails, "\n")] = 0;
+		emails[strcspn(emails, "\n")] = 0; // This just gets rid of the \n at the end of the input.
 		printf("emails: %s\n", emails);
 		printf("total no. of chars = %ld\n", check);
 
