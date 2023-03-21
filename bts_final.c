@@ -41,6 +41,7 @@ void free_all(struct node* root) {
 				free_all(root->left);
 				free_all(root->right);
 				free(root);
+				root = NULL;
 				printf("node freed\n");
 		}
 }

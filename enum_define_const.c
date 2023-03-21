@@ -40,13 +40,13 @@ int main() {
 		enum weekdays {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday};
 		enum weekdays day;
 		day = Wednesday;
-		printf("Wednesday is position %d in the days of the week\n");
+		printf("Wednesday is position %d in the days of the week\n", day);
 
 		other example:
 		enum weekdays {Sunday = 0, Monday, Tuesday, Wednesday = 10, Thursday, Friday = 15, Saturday};
 
 		printing this out would give:
-		1, 2, 3, 10, 11, 15, 16
+		0, 1, 2, 10, 11, 15, 16
 		(Like a dictionary key value pairs)
 
 		

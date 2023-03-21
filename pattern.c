@@ -32,24 +32,55 @@ int main(int argc, char** argv) {
 		}
 */
 
+/*
 		// Still trying to figure this one out..... :( ########################  HACKERRANK PROBLEM
 		int x = 0;
 		printf("Please enter a digit between 1 and 100:\n");
 		scanf("%d", &x);
 		int i = 0;
 		int j = 0;
-		int SIZE = (x*2-1);
+		int SIZE = (x*2)-1;
 		for(i=0;i<SIZE;i++) {
 				for(j=0;j<SIZE;j++) {
-						if(i==0 | j==0 | i==SIZE-1 | j==SIZE-1 ) { // I can't keep adding specific conditions, otherwise, I will have way too many to add if the number input(x) is large. So I need to find a formula which automatically adjusts it according to the value of x.
-								printf("%d ", x);
-						}else{
-								printf("00 ");
+						if(i==0 | j==0 | i==SIZE-1 | j==SIZE-1 ) {
+								printf("%.02d ", x);
+						}else {
+								printf("%.02d ",x-1);
+						// STILL CAN'T FIGURE THIS FUCKER OUT!!
 						}
+
 				}
 				printf("\n");
 		}
 		printf("SIZE = %d\n", SIZE);// z doesn't change....
-		
+*/		
+
+
+		// THIS WORKS - FROM YOUTUBE.
+		int n, len, start, end;
+		scanf("%d", &n);
+		len = 2*n-1;
+		start = 0;
+		end = len-1;
+		int arr[len][len];
+		while(n!=0) {
+				for(int i=start;i<=end;i++) {
+						for(int j=start;j<=end;j++) {
+								if(i==start || i==end || j==start || j==end) {
+										arr[i][j] = n;
+								}
+						}
+				}
+				++start;
+				--end;
+				--n;
+		}
+		for(int i=0;i<len;i++) {
+				for(int j=0;j<len;j++) {
+						printf("%d", arr[i][j]);
+				}
+				printf("\n");
+		}
+	
 		return 0;
 }

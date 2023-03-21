@@ -23,7 +23,7 @@ main:
 
 ; printf args
 		xor rax, rax
-		lea rsi, [rbp-32]			; load buffer address
+		lea rsi, [rbp-32]			; load buffer address, which now contains the copied text
 		lea rdi, [rel fmt]			; load format string
 		xor rax, rax
 		call printf wrt ..plt

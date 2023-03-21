@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 		}
 		if(pthread_join(t1, NULL) != 0) {
 				return 3;
-		};		
+		}		
 		if(pthread_join(t2, NULL) != 0) {
 				return 4;
-		};		
+		}		
 
 		return 0;
 

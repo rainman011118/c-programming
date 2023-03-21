@@ -38,3 +38,5 @@ int main(int argc, char** argv) {
 		return 0;
 
 }
+
+//Overall the only real difference is that it saves 1 step (ie the return from the function)

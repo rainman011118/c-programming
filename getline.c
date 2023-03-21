@@ -7,7 +7,7 @@
 
 int main(int argc, char** argv) {
 		char* buffer = NULL;
-		size_t size = 32;// 32 is pointless, since realloc is called regardless if input is bigger than this. HOWEVER, good code is to specify all sizes.
+		size_t size = 32;// Always good practice to specify initial size, rather than leave it up to chance.
 		size_t characters;
 
 		// Good practice to specify a memory allocation

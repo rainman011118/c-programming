@@ -34,7 +34,6 @@ int main(int argc, char** argv) {
 		printf("strlen of buffer: %ld\n", strlen(buffer));
 		printf("len of buffer: %ld\n", len);
 		//printf("buffer = %s\n", buffer); // This will simply print the last string that was copied to buffer...
-
 		fclose(fp);
 		free(buffer);
 		buffer = NULL;

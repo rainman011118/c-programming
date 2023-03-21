@@ -14,8 +14,9 @@ int main(int argc, char** argv) {
 				perror("Error opening file");
 				return -1;
 		}
+		//Write ch to the new file
 		while((ch = fgetc(fp)) != EOF ) {
-				fputc(ch, fp1);//fp1 can be changed to stdout if you wanted to write to stdout. (But what is the point if read already does this...)
+				fputc(ch, fp1);
 		}
 		fclose(fp);
 		fclose(fp1);

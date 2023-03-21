@@ -71,7 +71,8 @@ int main(int argc, char** argv) {
 		printf("sizeof(x) = %ld\nsizeof(p) = %ld\nx = %d and char: %c\n", sizeof(x), sizeof(p), x, x);
 		printf("Bit order: (MSB->LSB) %d %d %d %d\n", *(p+3), *(p+2), *(p+1), *p);
 
-/*		//bit shifting
+		//bit shifting
+		puts("Now let's get onto bit shifting...");
 		printf("y = %d\ty << 1 = %d\n", y, y << 1);
 		printf("y = %d\n", y);
 		for(int l=0;l<8;l++) {
@@ -83,12 +84,12 @@ int main(int argc, char** argv) {
 				}
 		}
 		//Printing out hexadecimal values of chars
-		printf("hexa 'A' = %0x\n", 'A');
-		printf("hexa 'm' = %0x\n", 'm');
-		printf("hexa '1' = %0x\n", '1');
-		printf("hexa '48' = %0x\n", 48);
+		printf("ascii 'A' = 0x%x\n", 'A');
+		printf("ascii 'm' = 0x%x\n", 'm');
+		printf("ascii '0' = 0x%x\n", '0');
+		printf("decimal 48 = char '0' = 0x%x\n", 48);
 
-*/		
+		
 		//fizzbuzz:
 /*		puts("Fizzbuzz...");
 		int max = 30;
@@ -104,7 +105,6 @@ int main(int argc, char** argv) {
 				}else {printf("%d:\n", p);}
 		}
 */		
-
 
 		return 0;
 }

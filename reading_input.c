@@ -13,10 +13,10 @@ void fgets_char(int*, int*);
 void free_all(int** root, int rows);
 void display(int** r, int rows, int cols);
 void fill_matrix(int** r, int rows, int cols);
-int** make_matrix(int rows, int cols);
+void make_matrix(int** r, int rows, int cols);
 
 int main(int argc, char** argv) {
-		int** root = NULL;
+		int* root = NULL;
 		char* ptr = NULL;
 		int SIZE, LEN, ROWS, COLS;
 		long choice;
@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 //						clearbuffer();//NOTE REQUIRED SINCE EACH FN SEEMS TO HAVE ITS OWN BUFFER
 						fgets_char(&ROWS, &COLS);
 				}else{
-						printf("Invalid choice.  Please pick one of the three options shown\n");
+						printf("Invalid choice.  Please pick one of the two options shown\n");
 						return 1;
 				}
 		}else{
@@ -65,9 +65,9 @@ int main(int argc, char** argv) {
 		}
 
 		//MAIN FUNCTIONS TO MAKE MATRIX;
-		root = make_matrix(ROWS, COLS);
-		fill_matrix(root, ROWS, COLS);
-		display(root, ROWS, COLS);
+		make_matrix(&root, ROWS, COLS);
+		fill_matrix(&root, ROWS, COLS);
+		display(&root, ROWS, COLS);
 
 		//JUST DOUBLE CHECKING THE BUFFER CONTENTS AGAIN....IT IS THE SAME AS EARLIER EVEN AFTER RETURNING...
 		printf("printing buffer contents....\n");
@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
 		}
 		printf("\n");
 
-		free_all(root, ROWS);
+		free_all(&root, ROWS);
 		return 0;
 }
 /*THIS NO LONGER SEEMS TO BE REQUIRED AS EACH FN SEEMS TO HAVE ITS OWN BUFFER...IT WAS FUCKING UP ANYWAY
@@ -165,18 +165,17 @@ void fgets_char(int* rows, int* cols) {
 				exit(5);
 		}
 }
-int** make_matrix(int rows, int cols) {
+void make_matrix(int** r, int rows, int cols) {
 		int i;
-		int** x = malloc(rows*sizeof(int*));
-		if(x==NULL) {
+		*r = malloc(rows*sizeof(int*));
+		if(r==NULL) {
 				fprintf(stderr, "Memory allocation failed\n");
 				exit(6);
 		}
 		for(i=0;i<rows;i++) {
-				x[i] = malloc(cols*sizeof(int));
+				r[i] = malloc(cols*sizeof(int));
 		}
 		printf("%d x %d Matrix created\n", rows, cols);
-		return x;
 }
 void fill_matrix(int** r, int rows, int cols) {
 		printf("Filling matrix....\n");
@@ -198,15 +197,18 @@ void display(int** r, int rows, int cols) {
 		}
 }
 void free_all(int** root, int rows) {
-		int i = 0;
-		while(i<rows) {
-				free(root[i]);
-				root[i] = NULL;
-				printf("Row freed\n");
-				i++;
+		if(*root==NULL) {
+				printf("root already NULL\n");
+				exit(7);
+		}else{
+				for(int i=0;i<rows;i++) {
+						free(root[i]);
+						root[i] = NULL;
+						printf("Row freed\n");
+				}
 		}
-		free(root);
-		root = NULL;
-		printf("Matrix freed\n");
+		free(*root);
+		*root = NULL;
+		printf("Matrix freed up\n");
 }
 

@@ -16,8 +16,9 @@ int main(int argc, char *argv[])
 
     /*2nd works perfect. '[^;]' means:
     read everything that is not a semi-colon, 
-    includes whitespace.*/
-    sscanf(str, "%[^;];%[^;];%u;%d", name, city, &age, &hasDegree);
+    includes whitespace.
+NOTE: the semi-colons between the format chars are essential */
+    sscanf(str, "%[^;];%[^;];%u%d", name, city, &age, &hasDegree);
 
     /*3rd way with 'scanf' works the same if I type
     the same way: 'Jonny; New York; 20; 1'

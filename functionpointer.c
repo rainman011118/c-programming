@@ -14,7 +14,7 @@ void exec(long long (*fun2)(int, int)) {
 }
 
 int main() {
-	long long (*fun)(int, int);// = add; is alternative way (just like a pointer).
+	long long (*fun)(int, int);// = &add; is alternative way (just like a pointer).
 	fun = &add;
 	//This above is the main bit.^^^^^
 	

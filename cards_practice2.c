@@ -79,6 +79,7 @@ void freeall(char** m, int r) {
 				for(int i=0;i<r;i++) {
 								free(m[i]);
 								m[i] = NULL;
+								printf("row freed\n");
 				}
 				free(m);
 				m = NULL;

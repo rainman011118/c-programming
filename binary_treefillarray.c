@@ -138,8 +138,8 @@ void print_tree(char* tree, int size) {
 
 
 //  ************************  Tree functions  ****************************
-struct node* create_node(struct node* root, int data) {
-		root = malloc(sizeof(struct node));
+struct node* create_node(int data) {
+		struct node* root = malloc(sizeof(struct node));
 		if(root==NULL) {
 				fprintf(stderr, "Memory allocation failed\n");
 				exit(1);
@@ -153,7 +153,7 @@ struct node* create_node(struct node* root, int data) {
 
 void insert(struct node** root, int data) {
 		if(*root==NULL) {
-				*root = create_node(*root, data);
+				*root = create_node(data);
 				push((*root)->data);
 		}else if((*root)->data >= data) {
 				insert(&(*root)->left, data);

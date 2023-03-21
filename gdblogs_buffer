@@ -1,0 +1,14 @@
+old rbp: 0xffffdd90
+ret:	0x555551e5
+buffer starts: 0x..dd50
+
+Addressing must be backwards from the address no.  but then why does the buffer go upwards...??
+ret address @ 0x..dd8c...UNLESS, the memory address' are read downwards, i.e. ...dd88-90 rather than 90-98??
+
+Buffer was 30, but it still gives an extra 10bytes buffer.....I would have thought it would just be 2 to complete the 32 bytes regularity....
+ Anyway, If I input 41bytes of data, the 41st byte overwrites, which is @ ..dd7c-80
+
+ The old rbp @ ..dd80 is not touched, and neither is the ret @ ..dd8c
+
+ I wonder if this is because the bytes before the actual old rbp and ret, is the stk_check_fail....
+ Perhaps I need to compile with -fno-stack-protection flag...

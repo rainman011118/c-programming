@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 		FILE* out;
 
 		//create 2 places to store info:
-		char buffer_in[256], buffer_out[256];
+		char buffer_in[64], buffer_out[64];
 
 		//point.dat should be created as a new file in which the info (x and y) will be written to.
 		out = fopen("point.dat", "wx");
@@ -27,20 +27,21 @@ int main(int argc, char** argv) {
 		}
 		
 		//sprintf converts data to string format and prints it to buffer_out.
+		//So the 2 ints are converted to a string and written to buffer_out.
 		sprintf(buffer_out, "%d, %d\n", p1.x, p1.y);
 
-		//fwrite returns the number of bytes written hence why we assign it to size t variable
+		//fwrite returns the number of bytes written.
+		//This then writes the buffer_out to the file
 		size_t bytes_written = fwrite(buffer_out, sizeof(char), strlen(buffer_out), out);
  
 		printf("Me just checking how many bytes of strlen(buffer_out) = %ld\nFile successfully written\n", strlen(buffer_out));
-		fclose(out);
 
 		//This if statement below is just a check to see if the correct number of bytes were written
 		if(bytes_written != strlen(buffer_out)) {
 				return 1;
 		}
 
-
+		fclose(out);
 		return 0;
 }
 

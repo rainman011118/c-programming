@@ -26,19 +26,17 @@ main:
 
 	// char* binaryPath = "//bin/sh";
 
-	leaq	.LC0(%rip), %rax
+	leaq	.LC0(%rip), %rax				//store '/bin/sh' (binaryPath) on stack
 	movq	%rax, -40(%rbp)
 	movq	-40(%rbp), %rax
 	
-	// char* args[] = {binaryPath, NULL};  // Disassemble to see if this takes up 2 x 8byte stack positions..it does, the first is for binaryPath and the 2nd is for NULL.
-
-	movq	%rax, -32(%rbp)
-	movq	$0, -24(%rbp)
+	movq	%rax, -32(%rbp)					//store '/bin/sh' (as the first arg in args to execve)
+	movq	$0, -24(%rbp)					//store 'NULL' (as the 2nd arg in args to execve)
 
 	// execv(binaryPath, args);
 
-	leaq	-32(%rbp), %rdx
-	movq	-40(%rbp), %rax
+	leaq	-32(%rbp), %rdx					//load '/bin/sh' into rdx for later move into rsi
+	movq	-40(%rbp), %rax					//load '/bin/sh' into rax for later move into rdi
 	movq	%rdx, %rsi
 	movq	%rax, %rdi
 	call	execv@PLT

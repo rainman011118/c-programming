@@ -8,10 +8,10 @@ int main(int argc, char** argv) {
 		}
 		int ch;
 		while((ch = fgetc(fp)) != EOF) {
-				printf("%c", ch);
+				putchar(ch);
 		}
+		
 		fclose(fp);
-
 		return 0;
 }
 

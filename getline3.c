@@ -10,7 +10,6 @@ int main(int argc, char** argv) {
 		int len = 32;
 		char array[len];
 
-
 		char* buffer = NULL;
 		size_t len2 = 0;
 		ssize_t characters;

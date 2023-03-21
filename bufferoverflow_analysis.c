@@ -37,12 +37,12 @@ int main(int argc, char** argv) {
 0x7ffffffede20: 0xfffede46   |  0x00007fff      0x0800124d      0x00000000
 0x7ffffffede30: 0xff7a0fc8   |  0x00007fff      0x08001200      0x00000000
 0x7ffffffede40: 0x00000000   |  0x00000000      0x080010a0      0x00000000
-0x7ffffffede50: 0xfffedf50   |  0x00007fff      0x0d454900 <-	0xa1051b95
-0x7ffffffede60: 0x00000000   |  0x00000000      0xff5d70b3   |  0x00007fff
-						     |								 |
-						     |								  -- This is where buffer = segfault
-							 |
-							  -- This is where buffer starts
+0x7ffffffede50: 0xfffedf50   |  0x00007fff      0x0d454900	<-	0xa1051b95
+0x7ffffffede60: 0x00000000   |  0x00000000      0xff5d70b3		| 0x00007fff
+												     |																|
+												     |																-- This is where buffer = segfault
+												     |
+												     -- This is where buffer starts
 
 On another program (gets_test2) I did with gets, it did the same thing: I created a buffer[16], yet on the stack analysis, there is 8 extra bytes allowed before OVERFLOW on the 9th byte.  
 Also, this 9th byte area is definiitely a place where other important info has been pushed onto the stack at an earlier time in the program: 

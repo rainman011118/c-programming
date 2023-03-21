@@ -14,7 +14,7 @@ int main()
 	printf("Now after the seed is used:(these numbers are different each run)\n%d\n", rand());
 	printf("%d\n", rand());
 	printf("%d\n", rand());
-//NOTE: If I assign rand() to an variable, then whenever I print the variable, the number will be the same every single time. Therefore, you have to call rand() each and everytime, if you want to get different numbers
+//NOTE: If I assign rand() to a variable, then whenever I print the variable, the number will be the same every single time. Therefore, you have to call rand() each and everytime, if you want to get different numbers
 
     int x, r;
     x = 10;

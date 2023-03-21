@@ -9,7 +9,6 @@
 */
 
 int main(int argc, char** argv) {
-
 		FILE* fp = NULL;
 		int ch;
 		char buffer[256];
@@ -20,8 +19,9 @@ int main(int argc, char** argv) {
 				return(-1);
 		}
 
+		//ftell() returns the current position of the file pointer.
 		fseek(fp, 0, SEEK_END);
-		printf("%ld\n", ftell(fp));
+		printf("Position of pointer in file (which should be the last character since we used seek_end:  %ld\n", ftell(fp));
 
 		// Now to reset the pointer to start of file, in order for fread to work correctly.
 		fseek(fp, 0, SEEK_SET);

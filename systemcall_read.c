@@ -24,4 +24,5 @@ int main() {
 
 		return 0;
 }
+//NOTE: fd should always return '3', since 0,1,2 are already taken by stdin, stdout and stderr.
 

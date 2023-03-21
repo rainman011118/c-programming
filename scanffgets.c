@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 /*'How to use scanf with fgets' youtube 'CodeVault'*/
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int id;
     char message[100];
-    while (1)
-    /* (1) represents a continuous loop*/
-    {
+    while (1) {
         printf("Input ID: ");
         scanf("%d", &id);
         fgetc(stdin);
@@ -20,9 +17,6 @@ int main(int argc, char **argv)
         printf("Input message: ");
         fgets(message, 100, stdin);
         message[strlen(message) - 1] = 0;
-        /*gets rid of the new-line ch which is included from 
-        fgets and replaces it with 0.
-		*/
         printf("(%d) Sent message: %s\n", id, message);
     }
 

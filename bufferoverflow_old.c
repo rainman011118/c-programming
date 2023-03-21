@@ -7,7 +7,6 @@
 char buffer[BUFFERSIZE] = "Welcome";
 char password[BUFFERSIZE] = "password5";
 
-
 int main(int argc, char** argv) {
 		if(argc != 3) {
 				printf("Error: 3 args needed: %s <password> <string_to_print>\n", argv[0]);
@@ -38,3 +37,7 @@ Safety changes:
 use strncpy for bounds check.
 use fgets().
 */
+
+/*NOTE: if I move buffer and password into main, they are loaded onto stack, so can be seen easily.
+ * Also, argc, and argv are usually placed furthest from the rbp, and can be seen on the stack, right at the top.
+ */
